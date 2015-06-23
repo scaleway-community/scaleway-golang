@@ -8,6 +8,11 @@ RUN /usr/local/sbin/builder-enter
 
 
 # Install packages
+RUN apt-get update \
+ && apt-get upgrade -y -q \
+ && apt-get install -y -q \
+    golang \
+ && apt-get clean
 
 
 # Clean rootfs from image-builder
