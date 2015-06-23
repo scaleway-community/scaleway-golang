@@ -1,7 +1,7 @@
 DOCKER_NAMESPACE =	armbuild/
 NAME =			scw-app-golang
 VERSION =		latest
-VERSION_ALIASES =	
+VERSION_ALIASES =	1.4.2 1.4 1
 TITLE =			Golang
 DESCRIPTION =		Golang
 SOURCE_URL =		https://github.com/scaleway/image-app-golang
