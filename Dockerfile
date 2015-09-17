@@ -1,5 +1,5 @@
-## -*- docker-image-name: "armbuild/scw-app-golang:latest" -*-
-FROM armbuild/scw-distrib-ubuntu:trusty
+## -*- docker-image-name: "scaleway/golang:latest" -*-
+FROM scaleway/ubuntu:trusty
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
