@@ -7,7 +7,8 @@ RUN /usr/local/sbin/builder-enter
 
 # Install packages
 RUN apt-get update -q \
- && apt-get install -y -q --no-install-recommends curl gcc ca-certificates libc6-dev \
+ && apt-get install -y -q --no-install-recommends \
+      curl gcc ca-certificates libc6-dev git \
  && apt-get clean
 
 # Configure environment
