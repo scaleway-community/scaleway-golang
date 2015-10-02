@@ -38,5 +38,14 @@ RUN echo "Installing Golang 1.5.1 Using go1.4.2" \
  && cd /usr/local/go/src \
  && GOROOT_BOOTSTRAP=/usr/local/go1.4.2 ./make.bash --no-clean
 
+ENV PATH=${PATH}:${GOROOT}/bin
+
+RUN echo "Configure environment" \
+ && mkdir -p /go/src /go/bin \
+ && chmod -R 777 /go \
+ && echo GOROOT=${GOROOT} > /etc/profile.d/golang \
+ && echo GOPATH=${GOPATH} >> /etc/profile.d/golang \
+ && echo PATH=\${PATH}:\${GOROOT}/bin >> /etc/profile.d/golang
+
 # Clean rootfs from image-builder
 RUN /usr/local/sbin/builder-leave
