@@ -13,7 +13,7 @@ RUN apt-get update -qq \
 
 # Configure environment
 ENV GOARCH=arm GOOS=linux GOLANG_VERSION=1.5.1 GOROOT=/usr/local/go GOPATH=/go
-ENV PATH=${PATH}:${GOROOT}/bin
+ENV PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 
 # Install Golang
 RUN echo "Installing Golang 1.4" \
@@ -41,7 +41,7 @@ RUN echo "Configure environment" \
  && chmod -R 777 /go \
  && echo GOROOT=${GOROOT} > /etc/profile.d/golang \
  && echo GOPATH=${GOPATH} >> /etc/profile.d/golang \
- && echo PATH=\${PATH}:\${GOROOT}/bin >> /etc/profile.d/golang
+ && echo PATH=\${PATH}:\${GOROOT}/bin:\${GOPATH}/bin >> /etc/profile.d/golang
 
 # Clean rootfs from image-builder
 RUN /usr/local/sbin/builder-leave
