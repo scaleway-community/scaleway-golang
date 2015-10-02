@@ -33,6 +33,11 @@ RUN curl -sSL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz \
 RUN cd /usr/src/go/src && ./make.bash --no-clean 2>&1
 RUN mkdir -p /go/src /go/bin && chmod -R 777 /go
 
+ENV PATH /go/bin/usr/src/go/bin:$PATH
+ENV GOPATH /go
+
+RUN echo "\nexport PATH=/go/bin:/usr/src/go/bin:\$PATH\nexport GOPATH=/go" >> /etc/bash.bashrc
+
 # Remove bootstrap source
 RUN rm -fr /usr/src$BOOTSTRAP
 
