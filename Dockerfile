@@ -6,14 +6,8 @@ MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 RUN /usr/local/sbin/builder-enter
 
 # Install packages
-RUN apt-get update \
- && apt-get upgrade -y -q \
- && apt-get install -y -q \
-    binutils \
-    bison \
-    gcc \
-    git \
-    make \
+RUN apt-get update -q \
+ && apt-get install -y -q --no-install-recommends curl gcc ca-certificates libc6-dev \
  && apt-get clean
 
 # Configure environment
