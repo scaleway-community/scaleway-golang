@@ -3,12 +3,12 @@ VERSION =		latest
 VERSION_ALIASES =	1.5.1 1.5 1
 TITLE =			Golang
 DESCRIPTION =		Golang
-SOURCE_URL =		https://github.com/scaleway/image-app-golang
+SOURCE_URL =		https://github.com/scaleway-community/scaleway-golang
 VENDOR_URL =		http://golang.org
 
 IMAGE_VOLUME_SIZE =     50G
 IMAGE_BOOTSCRIPT =      stable
-IMAGE_NAME =            Golang
+IMAGE_NAME =            Golang 1.5
 
 
 ## Image tools  (https://github.com/scaleway/image-tools)

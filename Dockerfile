@@ -5,36 +5,43 @@ MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 # Prepare rootfs for image-builder
 RUN /usr/local/sbin/builder-enter
 
-
 # Install packages
-RUN apt-get update \
- && apt-get upgrade -y -q \
- && apt-get install -y -q \
-    binutils \
-    bison \
-    gcc \
-    git \
-    make \
+RUN apt-get update -qq \
+ && apt-get install -y -q --no-install-recommends \
+      curl gcc ca-certificates libc6-dev git mercurial \
  && apt-get clean
 
-# Install goroot_bootsrap
-ENV BOOTSTRAP 1.4.2
-RUN mkdir /usr/src$BOOTSTRAP
-RUN curl -sSL https://golang.org/dl/go$BOOTSTRAP.src.tar.gz \
-    	 | tar -v -C /usr/src$BOOTSTRAP -xz
-RUN cd /usr/src$BOOTSTRAP/go/src && ./make.bash --no-clean 2>&1
-ENV PATH /usr/src$BOOTSTRAP/go/bin:$PATH
-ENV GOPATH /go
+# Configure environment
+ENV GOARCH=arm GOOS=linux GOLANG_VERSION=1.5.1 GOROOT=/usr/local/go GOPATH=/go
+ENV PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 
-ENV GOROOT_BOOTSTRAP /usr/src$BOOTSTRAP/go
-ENV GOLANG_VERSION 1.5.1
-RUN curl -sSL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz \
-    	 | tar -v -C /usr/src -xz
-RUN cd /usr/src/go/src && ./make.bash --no-clean 2>&1
-RUN mkdir -p /go/src /go/bin && chmod -R 777 /go
+# Install Golang
+RUN echo "Installing Golang 1.4" \
+ && cd /tmp \
+ && curl -O https://storage.googleapis.com/golang/go1.4.2.src.tar.gz \
+ && echo '460caac03379f746c473814a65223397e9c9a2f6 go1.4.2.src.tar.gz' | sha1sum -c \
+ && tar -C /usr/local -xzf go1.4.2.src.tar.gz \
+ && rm -f go1.4.2.src.tar.gz \
+ && mv /usr/local/go /usr/local/go1.4.2 \
+ && cd /usr/local/go1.4.2/src \
+ && ./make.bash \
+&& echo "Installing Golang 1.5.1 Using go1.4.2" \
+ && cd /tmp \
+ && curl -O https://storage.googleapis.com/golang/go1.5.1.src.tar.gz \
+ && echo '0df564746d105f4180c2b576a1553ebca9d9a124 go1.5.1.src.tar.gz' | sha1sum -c \
+ && tar -C /usr/local -xzf go1.5.1.src.tar.gz \
+ && rm -f /tmp/go1.5.1.src.tar.gz \
+ && cd /usr/local/go/src \
+ && GOROOT_BOOTSTRAP=/usr/local/go1.4.2 ./make.bash --no-clean \
+ && rm -rf /usr/local/go1.4.2
 
-# Remove bootstrap source
-RUN rm -fr /usr/src$BOOTSTRAP
+# Configure environment
+RUN echo "Configure environment" \
+ && mkdir -p /go/src /go/bin \
+ && chmod -R 777 /go \
+ && echo GOROOT=${GOROOT} > /etc/profile.d/golang \
+ && echo GOPATH=${GOPATH} >> /etc/profile.d/golang \
+ && echo PATH=\${PATH}:\${GOROOT}/bin:\${GOPATH}/bin >> /etc/profile.d/golang
 
 # Clean rootfs from image-builder
 RUN /usr/local/sbin/builder-leave
