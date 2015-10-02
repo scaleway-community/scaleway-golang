@@ -6,9 +6,9 @@ MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 RUN /usr/local/sbin/builder-enter
 
 # Install packages
-RUN apt-get update -q \
+RUN apt-get update -qq \
  && apt-get install -y -q --no-install-recommends \
-      curl gcc ca-certificates libc6-dev git \
+      curl gcc ca-certificates libc6-dev git mercurial \
  && apt-get clean
 
 # Configure environment
