@@ -1,6 +1,6 @@
 NAME =			golang
 VERSION =		latest
-VERSION_ALIASES =	1.4.2 1.4 1
+VERSION_ALIASES =	1.5.1 1.5 1
 TITLE =			Golang
 DESCRIPTION =		Golang
 SOURCE_URL =		https://github.com/scaleway/image-app-golang
