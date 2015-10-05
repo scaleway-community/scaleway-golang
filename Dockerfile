@@ -39,9 +39,9 @@ RUN echo "Installing Golang 1.4" \
 RUN echo "Configure environment" \
  && mkdir -p /go/src /go/bin \
  && chmod -R 777 /go \
- && echo GOROOT=${GOROOT} > /etc/profile.d/golang \
- && echo GOPATH=${GOPATH} >> /etc/profile.d/golang \
- && echo PATH=\${PATH}:\${GOROOT}/bin:\${GOPATH}/bin >> /etc/profile.d/golang
+ && echo export GOROOT=${GOROOT} > /etc/profile.d/golang.sh \
+ && echo export GOPATH=${GOPATH} >> /etc/profile.d/golang.sh \
+ && echo export PATH=\${PATH}:\${GOROOT}/bin:\${GOPATH}/bin >> /etc/profile.d/golang.sh
 
 # Clean rootfs from image-builder
 RUN /usr/local/sbin/builder-leave
