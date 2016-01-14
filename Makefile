@@ -1,6 +1,6 @@
 NAME =			golang
 VERSION =		latest
-VERSION_ALIASES =	1.5.2 1.5 1
+VERSION_ALIASES =	1.5.3 1.5 1
 TITLE =			Golang
 DESCRIPTION =		Golang
 SOURCE_URL =		https://github.com/scaleway-community/scaleway-golang
