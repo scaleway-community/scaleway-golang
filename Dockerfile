@@ -24,7 +24,7 @@ RUN apt-get update -qq \
 
 # Configure environment
 ENV GOOS=linux \
-    GOLANG_VERSION=1.5.3 \
+    GOLANG_VERSION=1.6 \
     GOROOT=/usr/local/go \
     GOPATH=/go \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go/bin:/go/bin
@@ -40,18 +40,18 @@ RUN case "${ARCH}" in \
  && echo "Installing Golang 1.4" \
  && cd /tmp \
  && curl -O https://storage.googleapis.com/golang/go1.4.2.src.tar.gz \
- && echo '460caac03379f746c473814a65223397e9c9a2f6 go1.4.2.src.tar.gz' | sha1sum -c \
+ && echo '299a6fd8f8adfdce15bc06bde926e7b252ae8e24dd5b16b7d8791ed79e7b5e9b go1.4.2.src.tar.gz' | sha256sum -c \
  && tar -C /usr/local -xzf go1.4.2.src.tar.gz \
  && rm -f go1.4.2.src.tar.gz \
  && mv /usr/local/go /usr/local/go1.4.2 \
  && cd /usr/local/go1.4.2/src \
  && ./make.bash \
-&& echo "Installing Golang 1.5.3 Using go1.4.2" \
+&& echo "Installing Golang 1.6 Using go1.4.2" \
  && cd /tmp \
- && curl -O https://storage.googleapis.com/golang/go1.5.3.src.tar.gz \
- && echo 'c17563a84df8aefb6a1e703a42f1e2842615e4a6 go1.5.3.src.tar.gz' | sha1sum -c \
- && tar -C /usr/local -xzf go1.5.3.src.tar.gz \
- && rm -f /tmp/go1.5.3.src.tar.gz \
+ && curl -O https://storage.googleapis.com/golang/go1.6.src.tar.gz \
+ && echo 'a96cce8ce43a9bf9b2a4c7d470bc7ee0cb00410da815980681c8353218dcf146 go1.6.src.tar.gz' | sha256sum -c \
+ && tar -C /usr/local -xzf go1.6.src.tar.gz \
+ && rm -f /tmp/go1.6.src.tar.gz \
  && cd /usr/local/go/src \
  && GOROOT_BOOTSTRAP=/usr/local/go1.4.2 ./make.bash --no-clean \
  && rm -rf /usr/local/go1.4.2
