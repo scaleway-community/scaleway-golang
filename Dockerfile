@@ -24,7 +24,7 @@ RUN apt-get update -qq \
 
 # Configure environment
 ENV GOOS=linux \
-    GOLANG_VERSION=1.6 \
+    GOLANG_VERSION=1.6.1 \
     GOROOT=/usr/local/go \
     GOPATH=/go \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go/bin:/go/bin
@@ -48,10 +48,10 @@ RUN case "${ARCH}" in \
  && ./make.bash \
 && echo "Installing Golang 1.6 Using go1.4.2" \
  && cd /tmp \
- && curl -O https://storage.googleapis.com/golang/go1.6.src.tar.gz \
- && echo 'a96cce8ce43a9bf9b2a4c7d470bc7ee0cb00410da815980681c8353218dcf146 go1.6.src.tar.gz' | sha256sum -c \
- && tar -C /usr/local -xzf go1.6.src.tar.gz \
- && rm -f /tmp/go1.6.src.tar.gz \
+ && curl -O https://storage.googleapis.com/golang/go1.6.1.src.tar.gz \
+ && echo 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 go1.6.1.src.tar.gz' | sha256sum -c \
+ && tar -C /usr/local -xzf go1.6.1.src.tar.gz \
+ && rm -f /tmp/go1.6.1.src.tar.gz \
  && cd /usr/local/go/src \
  && GOROOT_BOOTSTRAP=/usr/local/go1.4.2 ./make.bash --no-clean \
  && rm -rf /usr/local/go1.4.2
