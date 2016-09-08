@@ -1,6 +1,6 @@
 NAME =			golang
 VERSION =		latest
-VERSION_ALIASES =	1.7
+VERSION_ALIASES =	1.7.1
 TITLE =			Golang
 DESCRIPTION =		Golang
 SOURCE_URL =		https://github.com/scaleway-community/scaleway-golang
@@ -9,7 +9,7 @@ DEFAULT_IMAGE_ARCH =	x86_64
 
 IMAGE_VOLUME_SIZE =     50G
 IMAGE_BOOTSCRIPT =	latest
-IMAGE_NAME =            Golang 1.7
+IMAGE_NAME =            Golang 1.7.1
 
 
 ## Image tools  (https://github.com/scaleway/image-tools)
