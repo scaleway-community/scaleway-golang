@@ -24,8 +24,8 @@ RUN apt-get update -qq \
 
 # Configure environment
 ENV GOOS=linux \
-    GOLANG_VERSION=1.7 \
-    GOLANG_SHASUM=72680c16ba0891fcf2ccf46d0f809e4ecf47bbf889f5d884ccb54c5e9a17e1c0 \
+    GOLANG_VERSION=1.7.1 \
+    GOLANG_SHASUM=2b843f133b81b7995f26d0cb64bbdbb9d0704b90c44df45f844d28881ad442d3 \
     GOROOT=/usr/local/go \
     GOPATH=/go \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go/bin:/go/bin
