@@ -1,0 +1,4 @@
+file:
+  - path: /usr/lib/go-1.8/bin/go
+    owner: root:root
+    perm: 0775
