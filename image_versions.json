@@ -1,6 +1,6 @@
 {
-    "scaleway-golang-1.9": {
-        "directory": "1.9",
+    "scaleway-golang-latest": {
+        "directory": "latest",
         "architectures": [
             "arm", "arm64", "x86_64"
         ],
