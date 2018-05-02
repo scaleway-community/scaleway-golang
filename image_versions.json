@@ -1,0 +1,9 @@
+{
+    "scaleway-golang-1.9": {
+        "directory": "1.9",
+        "architectures": [
+            "arm", "arm64", "x86_64"
+        ],
+        "marketplace-id":"6c8d25c0-cb6f-4220-98aa-830b7e479ba5"
+    }
+}
